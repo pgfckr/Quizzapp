@@ -1,22 +1,64 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>FGT</title>
+    <title>Quizzapp</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <button id="load-btn">Load</button>
+    <div><p>Clicks: <a id="clicks">0</a></p></div>
+    <div id="counter"></div>
+    <button id="answer1">A</button>
+    <button id="answer2">B</button>
+    <button id="answer3">C</button>
+    <button id="answer4">D</button>
     <div id="content"></div>
-    <p id="timestamp"></p>
+    <p id="output"></p>
+    <button id="answer">Answer</button>
     <script>
+        var clicks = 0;
+        function click() {
+            clicks += 1;
+            document.getElementById("clicks").innerHTML = clicks;
+        }
         (function($) {
             var $content = $('#content');
-            var $timestamp = $('#timestamp');
-            $('#load-btn').on('click', function() {
+            var $output = $('#output');
+            $('#answer1').on('click', function() {
                $.get('/game/load', function(data) {
+                   click();
                    $content.html(data);
-                   $timestamp.html('Content loaded ' + Date.now().toString());
+                   $output.html('Antwort A ');
+
+               });
+            });
+            $('#answer2').on('click', function() {
+                $.get('/game/load', function(data) {
+                    click();
+                    $content.html(data);
+                    $output.html('Antwort B ');
+
+                });
+            });
+            $('#answer3').on('click', function() {
+                $.get('/game/load', function(data) {
+                    click();
+                    $content.html(data);
+                    $output.html('Antwort C ');
+
+                });
+            });
+            $('#answer4').on('click', function() {
+                $.get('/game/load', function(data) {
+                    click();
+                    $content.html(data);
+                    $output.html('Antwort D ');
+
+                });
+            });
+            $('#answer').on('click', function() {
+               $.post('/game/answer', '2', function(data) {
+                  alert(data);
                });
             });
         })(jQuery);

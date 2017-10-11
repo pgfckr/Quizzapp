@@ -25,7 +25,7 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-aop')
-	//compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	//compile('org.springframework.boot:spring-boot-starter-data-rest')
 	//compile('org.springframework.boot:spring-boot-starter-mobile')
 	//compile('org.springframework.boot:spring-boot-starter-security')
@@ -34,6 +34,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	//compile('org.springframework.boot:spring-boot-starter-websocket')
 	//runtime('com.h2database:h2')
+	runtime('org.postgresql:postgresql:9.4-1206-jdbc42')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')
 }
